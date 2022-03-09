@@ -59,6 +59,28 @@ int find_substring(char s[], char q[]) {
 
 */
 
+void BM(string stringline, string form) {
+    int i = 0;
+    int j = 0;
+    bool flag = false;
+    while (i < stringline.length()) {
+        for (j = 0;j< form.length(); ++j)
+            if (stringline[i+j] == form[j]) {
+                flag = true;
+            }
+            else
+                flag = false;
+      
+        if (flag) {
+            cout << "\nподстрока найдена" << i-1;
+            break;
+        }
+        i += j+1;
+    }
+
+
+}
+
 int find(string stringline, string form)
 {
     // i-с какого места строки  ищем
@@ -97,7 +119,7 @@ void fildPow(string stringline, string form) {
         }
         if (flag) {
             flagToe = true;
-            cout << "\nПодстрока найдена  " << i<<"  "<<stringline[i]<< stringline[i+1];
+            cout << "\nПодстрока найдена  " << i+1<<"  "<<stringline[i]<< stringline[i+1];
         }
     }
     if (!flagToe)
@@ -137,6 +159,9 @@ int main()
     else {
         cout << "\nПодстрока не найдена";
     }
+
+    cout << "\n\n\nBM";
+    BM(stringline, form);
 
     cout << "\nПроверка\n";
 
