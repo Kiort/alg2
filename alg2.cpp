@@ -65,8 +65,8 @@ int find(string stringline, string form)
     // j-с какого места образца ищем
     for (int i = 0; form[i]; ++i) {
         for (int j = 0;; ++j) {
-            if (form[i + j] == stringline[j]) return i; // образец найден 
-            if (form[i + j] != stringline[j]) break;
+            if (form[j] == stringline[i + j]) return i; // образец найден 
+            if (form[j] != stringline[i + j]) break;
         }
         // пока не найден, продолжим внешний цикл
     }
