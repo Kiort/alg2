@@ -12,11 +12,13 @@ void BM(string stringline, string form) {
             if (stringline[i+j] == form[j]) {
                 flag = true;
             }
-            else
+            else {
                 flag = false;
+                break;
+            }
       
         if (flag) {
-            cout << "\nподстрока найдена" << i-1;
+            cout << "\nподстрока найдена" << i+1;
             break;
         }
         i += j+1;
@@ -29,8 +31,8 @@ int find(string stringline, string form)
 {
     // i-с какого места строки  ищем
     // j-с какого места образца ищем
-    for (int i = 0; i < stringline.length(); ++i) {
-        for (int j = 0;; ++j) {
+    for (int i = 0; i < stringline.length(); i++) {
+        for (int j = 0; j< form.length(); j++) {
             if (form[j] == stringline[i + j]) return i; // образец найден 
             if (form[j] != stringline[i + j]) break;
         }
@@ -49,7 +51,7 @@ void fildPow(string stringline, string form) {
 
         for (int j=0; j<form.length(); j++) {
             if (form[j] == stringline[i+j]) {
-  //              cout <<"\n\n" <<form[j]<<" "<<stringline[i+j];
+                cout <<"\n\n" <<form[j]<<" "<<stringline[i+j];
                 flag = true;
                 
             }
@@ -81,6 +83,8 @@ int main()
     int size_string, size_form = 2;
     cout << "Введите колисчество элементов в строке: ";
     cin >> size_string;
+    cout << "\nВведите колисчество элементов в подстроке: ";
+    cin >> size_form;
     
     for (int i = 0; i < size_string; i++)
         stringline += char('a' + rand() % ('j' - 'a'));
@@ -90,13 +94,14 @@ int main()
     
 
 
-    int point = (rand() % size_string)-3;
+    int point = (rand() % size_string)- size_form;
+    for (int i = 0; i < size_form;i++) {
+        form[i] = stringline[point+i];
+    }
 
-    form[0] = stringline[point];
-    form[1] = stringline[point+1];
 
 
- //   cout << "\n Подстрока 1 " << stringline << "\n Подстрока 2 " << form;
+    cout << "\n Подстрока 1 " << stringline << "\n Подстрока 2 " << form;
     double time1 = clock();
     if (find(stringline, form) != -1) {
         cout << "\nНайдено на позиции " << find(stringline, form) + 1;
