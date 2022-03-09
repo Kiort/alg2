@@ -63,7 +63,7 @@ int find(string stringline, string form)
 {
     // i-с какого места строки  ищем
     // j-с какого места образца ищем
-    for (int i = 0; form[i]; ++i) {
+    for (int i = 0; i < stringline.length(); ++i) {
         for (int j = 0;; ++j) {
             if (form[j] == stringline[i + j]) return i; // образец найден 
             if (form[j] != stringline[i + j]) break;
