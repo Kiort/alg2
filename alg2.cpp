@@ -79,20 +79,25 @@ void fildPow(string stringline, string form) {
     bool flag = false;
     bool flagToe = false;
 
-    for (int i=0; i<stringline.length(); i++) {
+    for (int i=0; i<stringline.length()-1; i++) {
 
         for (int j=0; j<form.length(); j++) {
-            if (form[j] == stringline[i]) {
+            if (form[j] == stringline[i+j]) {
+  //              cout <<"\n\n" <<form[j]<<" "<<stringline[i+j];
                 flag = true;
+                
             }
             else { 
+                if(flag)
+ //                   cout << "\n\n" << form[j] << " " << stringline[i];
                 flag = false;
+                
                 break; 
             }
         }
         if (flag) {
             flagToe = true;
-            cout << "\nПодстрока найдена  " << i;
+            cout << "\nПодстрока найдена  " << i<<"  "<<stringline[i]<< stringline[i+1];
         }
     }
     if (!flagToe)
