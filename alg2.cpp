@@ -1,63 +1,6 @@
 ﻿#include <iostream>
 using namespace std;
 
-/*
-    void KMP()
-{
-    char* string;
-    char* form;
-    int size_string, size_form = 3;
-    cin >> size_string;
-
-    for (int i = 0; i < size_string; i++)
-        string[i] = char('a' + rand() % ('j' - 'a'));
-
-    for (int i = 0; i < size_form; i++)
-        form[i] = char('a' + rand() % ('j' - 'a'));
-    
-    find(string; form)
-    for (int i = 0; string[i];++i)
-    {
-        for (int i = 0;form[i]; i++)
-        {
-
-        }
-    }
-} 
-
-*/
-
-
-/*
-int find_substring(char s[], char q[]) {
-	int i, j, N, M;
-	N = strlen(s);
-	M = strlen(q);
-	int* d = new int(M); /* динамический массив длины М*/
-	/* Вычисление префикс-функции */  /*
-	i = 0;
-	j = -1;
-	d[0] = -1;
-	while ((i == 0) && (q[j] != q[i])){
-	    j = d[j];
-	    i++;
-	    j++;
-	    if (q[i] == q[j])
-		    d[i] = d[j];
-	    else
-		    d[i] = j;
-    }
-    /* поиск */  /*
-    while (i = 0, j = 0, (i = 0) && (q[j] != s[i]))
-        j = d[j];
-        delete(d); /* освобождение памяти массива d */ /*
-        if (j == M)
-        return i - j;
-        else /* i==N */ /*
-        return -1;
-    }
-
-*/
 
 void BM(string stringline, string form) {
     int i = 0;
