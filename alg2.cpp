@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <time.h>  
 using namespace std;
 
 
@@ -63,6 +64,7 @@ void fildPow(string stringline, string form) {
         if (flag) {
             flagToe = true;
             cout << "\nПодстрока найдена  " << i+1<<"  "<<stringline[i]<< stringline[i+1];
+            break;
         }
     }
     if (!flagToe)
@@ -94,22 +96,28 @@ int main()
     form[1] = stringline[point+1];
 
 
-    cout << "\n Подстрока 1 " << stringline << "\n Подстрока 2 " << form;
-
+ //   cout << "\n Подстрока 1 " << stringline << "\n Подстрока 2 " << form;
+    double time1 = clock();
     if (find(stringline, form) != -1) {
         cout << "\nНайдено на позиции " << find(stringline, form) + 1;
     }
     else {
         cout << "\nПодстрока не найдена";
     }
+    time1 = clock() - time1;
+    cout <<"\n\nВреме KMP " << time1;
 
     cout << "\n\n\nBM";
+    time1 = clock();
     BM(stringline, form);
+    time1 = clock() - time1;
+    cout << "\nВреме BM " <<  time1;
 
     cout << "\nПроверка\n";
-
+    time1 = clock();
     fildPow(stringline, form);
-   
+    time1= clock() - time1;
+    cout << "\nВреме Sl " << time1;
 
 
 }
