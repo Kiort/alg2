@@ -27,7 +27,7 @@ void BM(string stringline, string form) {
 
 }
 
-int find(string stringline, string form)
+int find(string stringline, string form) //RK
 {
     // i-с какого места строки  ищем
     // j-с какого места образца ищем
@@ -51,7 +51,7 @@ void fildPow(string stringline, string form) {
 
         for (int j=0; j<form.length(); j++) {
             if (form[j] == stringline[i+j]) {
-                cout <<"\n\n" <<form[j]<<" "<<stringline[i+j];
+//                cout <<"\n\n" <<form[j]<<" "<<stringline[i+j];
                 flag = true;
                 
             }
@@ -81,18 +81,17 @@ int main()
     string stringline;
     string form;
     int size_string, size_form = 2;
+    int colr = 1;
     cout << "Введите колисчество элементов в строке: ";
     cin >> size_string;
     cout << "\nВведите колисчество элементов в подстроке: ";
     cin >> size_form;
+    cout << "\nВведите колисчество пвторений: ";
+    cin >>  colr;
+
     
     for (int i = 0; i < size_string; i++)
         stringline += char('a' + rand() % ('j' - 'a'));
-
-    for (int i = 0; i < size_form; i++)
-        form += char('a' + rand() % ('j' - 'a'));
-    
-
 
     int point = (rand() % size_string)- size_form;
     for (int i = 0; i < size_form;i++) {
@@ -103,26 +102,51 @@ int main()
 
     cout << "\n Подстрока 1 " << stringline << "\n Подстрока 2 " << form;
     double time1 = clock();
-    if (find(stringline, form) != -1) {
-        cout << "\nНайдено на позиции " << find(stringline, form) + 1;
+    double tmm=0;
+
+
+    for (int k = 0; k < colr; k++) {
+        /*
+            
+        for (int i = 0; i < size_string; i++)
+            stringline += char('a' + rand() % ('j' - 'a'));
+
+        int point = (rand() % size_string) - size_form;
+        for (int i = 0; i < size_form; i++) {
+            form[i] = stringline[point + i];
+        }
+        */
+        time1 = clock();
+        if (find(stringline, form) != -1) {
+            cout << "\nНайдено на позиции " << find(stringline, form) + 1;
+        }
+        else {
+            cout << "\nПодстрока не найдена";
+        }
+        tmm+= clock() - time1;
     }
-    else {
-        cout << "\nПодстрока не найдена";
-    }
-    time1 = clock() - time1;
-    cout <<"\n\nВреме KMP " << time1;
+
+    cout <<"\n\nВреме RK " << tmm/colr;
 
     cout << "\n\n\nBM";
     time1 = clock();
-    BM(stringline, form);
-    time1 = clock() - time1;
-    cout << "\nВреме BM " <<  time1;
+    tmm = 0;
+    for (int k = 0; k < colr; k++) {
+        time1 = clock();
+        BM(stringline, form);
+        tmm += clock() - time1;
+    }
+    cout << "\nВреме BM " <<  tmm/colr;
 
-    cout << "\nПроверка\n";
-    time1 = clock();
-    fildPow(stringline, form);
-    time1= clock() - time1;
-    cout << "\nВреме Sl " << time1;
+    cout << "\n  KMP имени Слава\n";
+    tmm = 0;
+    for (int k = 0; k < colr; k++) {
+        time1 = clock();
+        fildPow(stringline, form);
+        tmm += clock() - time1;
+    }
+    
+    cout << "\nВреме Sl " << tmm/colr;
 
 
 }
