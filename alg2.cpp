@@ -93,9 +93,10 @@ int main()
     for (int i = 0; i < size_string; i++)
         stringline += char('a' + rand() % ('j' - 'a'));
 
-    int point = (rand() % size_string)- size_form;
+    int point = (rand() % (size_string - size_form -2)) ;
+       
     for (int i = 0; i < size_form;i++) {
-        form[i] = stringline[point+i];
+        form += stringline[point+i];
     }
 
 
@@ -106,16 +107,7 @@ int main()
 
 
     for (int k = 0; k < colr; k++) {
-        /*
-            
-        for (int i = 0; i < size_string; i++)
-            stringline += char('a' + rand() % ('j' - 'a'));
-
-        int point = (rand() % size_string) - size_form;
-        for (int i = 0; i < size_form; i++) {
-            form[i] = stringline[point + i];
-        }
-        */
+        
         time1 = clock();
         if (find(stringline, form) != -1) {
             cout << "\nНайдено на позиции " << find(stringline, form) + 1;
